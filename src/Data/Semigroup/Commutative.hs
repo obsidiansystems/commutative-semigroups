@@ -11,7 +11,7 @@ import Data.List (unfoldr)
 #if MIN_VERSION_base(4,7,0)
 import Data.Proxy
 #endif
-#if !MIN_VERSION_base(4,11,0)
+#if MIN_VERSION_base(4,9,0) && !MIN_VERSION_base(4,11,0)
 import Data.Semigroup (Semigroup(..))
 #endif
 #if MIN_VERSION_base(4,9,0)
@@ -26,7 +26,13 @@ import GHC.Generics
 -- |An 'Commutative' semigroup is a 'Semigroup' that follows the rule:
 --
 -- @a \<> b == b \<> a@
-class Semigroup g => Commutative g
+class
+#if MIN_VERSION_base(4,9,0)
+     Semigroup g
+#else
+     Monoid g
+#endif
+  => Commutative g
 
 instance Commutative ()
 
