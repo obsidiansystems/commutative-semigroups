@@ -8,7 +8,7 @@ license:             BSD-3-Clause
 license-file:        LICENSE
 author:              Nathan "Taneb" van Doorn
 maintainer:          mainainer@obsidian.systems
-copyright:           Copyright (C) 2013 Nathan van Doorn, 2021 Obsidian Systems
+copyright:           Copyright (C) 2013 Nathan van Doorn, 2021 Obsidian Systems LLC
 category:            Algebra, Data, Math
 build-type:          Simple
 bug-reports:         https://github.com/ObsidianSystems/commutative-semigroups/issues
