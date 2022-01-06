@@ -34,6 +34,7 @@ class
 #endif
   => Commutative g
 
+-- | Trivial commutative semigroup.
 instance Commutative ()
 
 instance Num a => Commutative (Sum a)
@@ -42,8 +43,11 @@ instance Fractional a => Commutative (Product a)
 
 instance Commutative a => Commutative (Dual a)
 
+-- | Functions lift commutative semigroups pointwise.
 instance Commutative b => Commutative (a -> b)
 
+-- | Product commutative semigroup.
+-- A Pair of commutative semigroups gives rise to a commutative semigroup
 instance (Commutative a, Commutative b) => Commutative (a, b)
 
 instance (Commutative a, Commutative b, Commutative c) => Commutative (a, b, c)
@@ -57,7 +61,7 @@ instance Commutative a => Commutative (Down a)
 #endif
 
 #if MIN_VERSION_base(4,7,0)
--- | Trivial semigroup, Functor style.
+-- | Trivial commutative semigroup, Functor style.
 instance Commutative (Proxy x)
 #endif
 
@@ -65,10 +69,10 @@ instance Commutative (Proxy x)
 -- arrives in base-4.9.0.0. Similarly, 'Identity' was defined in
 -- base-4.8.0.0 but doesn't get the Monoid instance until base-4.9.0.0
 #if MIN_VERSION_base(4,9,0)
--- | 'Const' lifts semigroups into a functor.
+-- | 'Const' lifts commutative semigroups into a functor.
 instance Commutative a => Commutative (Const a x)
 
--- | 'Identity' lifts semigroups pointwise (at only one point).
+-- | 'Identity' lifts commutative semigroups pointwise (at only one point).
 instance Commutative a => Commutative (Identity a)
 #endif
 
@@ -76,7 +80,7 @@ instance Commutative a => Commutative (Identity a)
 -- arrive in base-4.12.0.0.
 -- Also, contravariant was moved into base in this version.
 #if MIN_VERSION_base(4,12,0)
--- | Product of semigroups, Functor style.
+-- | Product of commutative semigroups, Functor style.
 instance (Commutative (f a), Commutative (g a)) => Commutative ((f :*: g) a)
 
 -- See https://gitlab.haskell.org/ghc/ghc/issues/11135#note_111802 for the reason Compose is not also provided.
