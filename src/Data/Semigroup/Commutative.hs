@@ -23,60 +23,60 @@ import Data.Functor.Contravariant (Op(Op))
 import GHC.Generics
 #endif
 
--- |An 'Abelian' group is a 'Group' that follows the rule:
+-- |An 'Commutative' semigroup is a 'Semigroup' that follows the rule:
 --
 -- @a \<> b == b \<> a@
-class Semigroup g => Abelian g
+class Semigroup g => Commutative g
 
-instance Abelian ()
+instance Commutative ()
 
-instance Num a => Abelian (Sum a)
+instance Num a => Commutative (Sum a)
 
-instance Fractional a => Abelian (Product a)
+instance Fractional a => Commutative (Product a)
 
-instance Abelian a => Abelian (Dual a)
+instance Commutative a => Commutative (Dual a)
 
-instance Abelian b => Abelian (a -> b)
+instance Commutative b => Commutative (a -> b)
 
-instance (Abelian a, Abelian b) => Abelian (a, b)
+instance (Commutative a, Commutative b) => Commutative (a, b)
 
-instance (Abelian a, Abelian b, Abelian c) => Abelian (a, b, c)
+instance (Commutative a, Commutative b, Commutative c) => Commutative (a, b, c)
 
-instance (Abelian a, Abelian b, Abelian c, Abelian d) => Abelian (a, b, c, d)
+instance (Commutative a, Commutative b, Commutative c, Commutative d) => Commutative (a, b, c, d)
 
-instance (Abelian a, Abelian b, Abelian c, Abelian d, Abelian e) => Abelian (a, b, c, d, e)
+instance (Commutative a, Commutative b, Commutative c, Commutative d, Commutative e) => Commutative (a, b, c, d, e)
 
 #if MIN_VERSION_base(4,11,0)
-instance Abelian a => Abelian (Down a)
+instance Commutative a => Commutative (Down a)
 #endif
 
 #if MIN_VERSION_base(4,7,0)
--- | Trivial group, Functor style.
-instance Abelian (Proxy x)
+-- | Trivial semigroup, Functor style.
+instance Commutative (Proxy x)
 #endif
 
 -- 'Const' has existed for a long time, but the Monoid instance
 -- arrives in base-4.9.0.0. Similarly, 'Identity' was defined in
 -- base-4.8.0.0 but doesn't get the Monoid instance until base-4.9.0.0
 #if MIN_VERSION_base(4,9,0)
--- | 'Const' lifts groups into a functor.
-instance Abelian a => Abelian (Const a x)
+-- | 'Const' lifts semigroups into a functor.
+instance Commutative a => Commutative (Const a x)
 
--- | 'Identity' lifts groups pointwise (at only one point).
-instance Abelian a => Abelian (Identity a)
+-- | 'Identity' lifts semigroups pointwise (at only one point).
+instance Commutative a => Commutative (Identity a)
 #endif
 
 -- (:*:) and (:.:) exist since base-4.6.0.0 but the Monoid instances
 -- arrive in base-4.12.0.0.
 -- Also, contravariant was moved into base in this version.
 #if MIN_VERSION_base(4,12,0)
--- | Product of groups, Functor style.
-instance (Abelian (f a), Abelian (g a)) => Abelian ((f :*: g) a)
+-- | Product of semigroups, Functor style.
+instance (Commutative (f a), Commutative (g a)) => Commutative ((f :*: g) a)
 
 -- See https://gitlab.haskell.org/ghc/ghc/issues/11135#note_111802 for the reason Compose is not also provided.
 -- Base does not define Monoid (Compose f g a) so this is the best we can
 -- really do for functor composition.
-instance Abelian (f (g a)) => Abelian ((f :.: g) a)
+instance Commutative (f (g a)) => Commutative ((f :.: g) a)
 
-instance Abelian a => Abelian (Op a b)
+instance Commutative a => Commutative (Op a b)
 #endif
