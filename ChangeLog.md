@@ -2,7 +2,7 @@
 
 ## 0.0.1.0 -- 2021-01-28
 
-Add instance for `Maybe`
+- Add instance for `Maybe`.
 
 ## 0.0.0.0 -- 2021-01-06
 
