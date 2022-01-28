@@ -37,6 +37,9 @@ class
 -- | Trivial commutative semigroup.
 instance Commutative ()
 
+-- | @since 0.0.1.0
+instance Commutative a => Commutative (Maybe a)
+
 instance Num a => Commutative (Sum a)
 
 instance Fractional a => Commutative (Product a)
