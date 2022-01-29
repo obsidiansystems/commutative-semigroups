@@ -42,7 +42,7 @@ instance Commutative a => Commutative (Maybe a)
 
 instance Num a => Commutative (Sum a)
 
-instance Fractional a => Commutative (Product a)
+instance Num a => Commutative (Product a)
 
 instance Commutative a => Commutative (Dual a)
 
