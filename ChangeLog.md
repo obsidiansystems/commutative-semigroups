@@ -1,6 +1,6 @@
 # Revision history for commutative-semigroups
 
-## 0.0.2.0 -- ????-??-??
+## 0.0.2.0 -- 2022-03-26
 
 - Add `instance Ord a => Commutative (Set a)`
 - Add `instance Commutative IntSet`
