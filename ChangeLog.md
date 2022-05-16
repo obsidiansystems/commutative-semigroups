@@ -2,8 +2,9 @@
 
 ## Unreleased
 
-- `Commutative (Product a)` now merely requires
-  `Num a`.
+- `Commutative (Product a)` now merely requires `CommutativeProduct a`.
+  `CommutativeProduct` is a new class to indicate `(*)` from Num is
+  commutative, which is not required by `Num`.`
 
 ## 0.0.2.0 -- 2022-03-26
 
