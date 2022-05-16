@@ -1,6 +1,6 @@
 cabal-version:       2.4
 name:                commutative-semigroups
-version:             0.0.1.0
+version:             0.0.2.0
 synopsis:            Commutative semigroups
 description:
   A commutative semigroup is a semigroup where the order of arguments to mappend does not matter.
@@ -23,6 +23,7 @@ source-repository head
 library
   exposed-modules:     Data.Semigroup.Commutative
   -- other-modules:
-  build-depends:       base >= 4.6 && < 5
+  build-depends:       base >= 4.6 && < 4.17,
+                       containers >= 0.4 && < 0.7
   hs-source-dirs:      src
   default-language:    Haskell2010

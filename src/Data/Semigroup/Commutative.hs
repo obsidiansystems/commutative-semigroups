@@ -5,9 +5,11 @@
 
 module Data.Semigroup.Commutative where
 
+import Data.IntSet (IntSet)
 import Data.Monoid
 import Data.Ord
 import Data.List (unfoldr)
+import Data.Set
 #if MIN_VERSION_base(4,7,0)
 import Data.Proxy
 #endif
@@ -58,6 +60,12 @@ instance (Commutative a, Commutative b, Commutative c) => Commutative (a, b, c)
 instance (Commutative a, Commutative b, Commutative c, Commutative d) => Commutative (a, b, c, d)
 
 instance (Commutative a, Commutative b, Commutative c, Commutative d, Commutative e) => Commutative (a, b, c, d, e)
+
+-- | @since 0.0.2.0
+instance Ord a => Commutative (Set a)
+
+-- | @since 0.0.2.0
+instance Commutative IntSet
 
 #if MIN_VERSION_base(4,11,0)
 instance Commutative a => Commutative (Down a)
