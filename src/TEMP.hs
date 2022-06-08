@@ -9,11 +9,17 @@ import Data.Complex (Complex)
 import Data.Fixed
 import Data.Functor.Identity
 import Data.Int
-import Data.Ord (Down)
 import Data.Ratio (Ratio)
-import Data.Semigroup (Max, Min, Product, Sum)
 import Data.Word
 import Numeric.Natural
+
+#if MIN_VERSION_base(4, 9, 0)
+import Data.Semigroup (Max, Min, Product, Sum)
+#endif
+
+#if MIN_VERSION_base(4, 11, 0)
+import Data.Ord (Down)
+#endif
 
 #if MIN_VERSION_base(4, 12, 0)
 import Data.Functor.Contravariant (Op)
@@ -57,18 +63,6 @@ instance (RealFloat a, CommutativeProduct a) => CommutativeProduct (Complex a)
 
 instance CommutativeProduct a => CommutativeProduct (Identity a)
 
--- @since: base-4.9.0.0
-instance CommutativeProduct a => CommutativeProduct (Down a)
-
--- @since: base-4.11.0.0
-instance CommutativeProduct a => CommutativeProduct (Max a)
-
--- @since: base-4.9.0.0
-instance CommutativeProduct a => CommutativeProduct (Min a)
-
--- @since: base-4.9.0.0
-instance CommutativeProduct a => CommutativeProduct (Product a)
-
 -- @since: base-4.7.0.0
 instance CommutativeProduct a => CommutativeProduct (Sum a)
 
@@ -77,8 +71,24 @@ instance (Integral a, CommutativeProduct a) => CommutativeProduct (Ratio a)
 
 instance (HasResolution a, CommutativeProduct a) => CommutativeProduct (Fixed a)
 
+#if MIN_VERSION_base(4, 9, 0)
+-- @since: base-4.9.0.0
+instance CommutativeProduct a => CommutativeProduct (Min a)
+
+-- @since: base-4.9.0.0
+instance CommutativeProduct a => CommutativeProduct (Max a)
+
+-- @since: base-4.9.0.0
+instance CommutativeProduct a => CommutativeProduct (Product a)
+
 -- @since: base-4.9.0.0
 instance CommutativeProduct a => CommutativeProduct (Const a b)
+#endif
+
+#if MIN_VERSION_base(4, 11, 0)
+-- @since: base-4.11.0.0
+instance CommutativeProduct a => CommutativeProduct (Down a)
+#endif
 
 #if MIN_VERSION_base(4, 12, 0)
 -- @since: base-4.12.0.0
