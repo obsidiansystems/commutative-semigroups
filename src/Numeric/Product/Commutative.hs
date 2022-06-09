@@ -1,5 +1,5 @@
 {-# LANGUAGE CPP #-}
-module TEMP
+module Numeric.Product.Commutative
   ( CommutativeProduct (..)
   )
   where

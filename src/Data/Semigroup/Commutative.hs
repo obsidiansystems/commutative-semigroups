@@ -24,7 +24,7 @@ import Data.Functor.Identity
 import Data.Functor.Contravariant (Op(Op))
 import GHC.Generics
 #endif
-import TEMP ( CommutativeProduct )
+import Numeric.Product.Commutative ( CommutativeProduct )
 
 -- |An 'Commutative' semigroup is a 'Semigroup' that follows the rule:
 --
