@@ -59,6 +59,9 @@ instance CommutativeProduct Word64
 instance CommutativeProduct Word
 instance CommutativeProduct Natural
 
+instance CommutativeProduct Float
+instance CommutativeProduct Double
+
 instance (RealFloat a, CommutativeProduct a) => CommutativeProduct (Complex a)
 
 instance CommutativeProduct a => CommutativeProduct (Identity a)
