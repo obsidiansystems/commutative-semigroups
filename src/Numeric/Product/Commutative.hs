@@ -43,6 +43,8 @@ import Data.Monoid (Alt)
 -- * @Data.Matrix.Matrix@ from the @matrix@ package uses '(*)' for
 --   matrix multiplication, which is also non-commutative (on square
 --   matrices, which is the only time the question makes sense).
+--
+-- @since 0.1.0
 class Num a => CommutativeProduct a
 
 instance CommutativeProduct Int8

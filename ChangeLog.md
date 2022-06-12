@@ -1,6 +1,6 @@
 # Revision history for commutative-semigroups
 
-## Unreleased
+## 0.1.0.0 -- 2022-06-12
 
 - `Commutative (Product a)` now requires `CommutativeProduct a`.
   `CommutativeProduct` is a new class to indicate `(*)` from `Num` is
