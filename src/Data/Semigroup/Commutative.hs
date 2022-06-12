@@ -24,6 +24,7 @@ import Data.Functor.Identity
 import Data.Functor.Contravariant (Op(Op))
 import GHC.Generics
 #endif
+import Numeric.Product.Commutative ( CommutativeProduct )
 
 -- |An 'Commutative' semigroup is a 'Semigroup' that follows the rule:
 --
@@ -44,7 +45,7 @@ instance Commutative a => Commutative (Maybe a)
 
 instance Num a => Commutative (Sum a)
 
-instance Fractional a => Commutative (Product a)
+instance CommutativeProduct a => Commutative (Product a)
 
 instance Commutative a => Commutative (Dual a)
 

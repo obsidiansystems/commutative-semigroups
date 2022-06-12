@@ -22,6 +22,7 @@ source-repository head
 
 library
   exposed-modules:     Data.Semigroup.Commutative
+                       Numeric.Product.Commutative
   -- other-modules:
   build-depends:       base >= 4.6 && < 4.17,
                        containers >= 0.4 && < 0.7
