@@ -1,5 +1,10 @@
 # Revision history for commutative-semigroups
 
+## 0.1.0.1 -- 2023-04-17
+
+- Loosen version bounds
+- Support GHC 9.6.1
+
 ## 0.1.0.0 -- 2022-06-12
 
 - `Commutative (Product a)` now requires `CommutativeProduct a`.
