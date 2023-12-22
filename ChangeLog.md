@@ -1,5 +1,9 @@
 # Revision history for commutative-semigroups
 
+## 0.1.0.2 -- 2023-12-22
+
+- Support GHC 9.8.1
+
 ## 0.1.0.1 -- 2023-04-17
 
 - Loosen version bounds
