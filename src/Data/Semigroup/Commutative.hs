@@ -26,7 +26,7 @@ import GHC.Generics
 #endif
 import Numeric.Product.Commutative ( CommutativeProduct )
 
--- |An 'Commutative' semigroup is a 'Semigroup' that follows the rule:
+-- | A 'Commutative' semigroup is a 'Semigroup' that follows the rule:
 --
 -- @a \<> b == b \<> a@
 class
