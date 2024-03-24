@@ -13,6 +13,9 @@ import Data.Set
 #if MIN_VERSION_base(4,7,0)
 import Data.Proxy
 #endif
+#if MIN_VERSION_base(4,8,0)
+import GHC.Event (Event, Lifetime)
+#endif
 #if MIN_VERSION_base(4,9,0) && !MIN_VERSION_base(4,11,0)
 import Data.Semigroup (Semigroup(..))
 #endif
@@ -39,6 +42,22 @@ class
 
 -- | Trivial commutative semigroup.
 instance Commutative ()
+
+instance Commutative All
+instance Commutative Any
+
+#if MIN_VERSION_base(4,8,0)
+instance Commutative Event
+instance Commutative Lifetime
+#endif
+
+instance Ord a => Commutative (Max a)
+instance Ord a => Commutative (Min a)
+instance Commutative Void
+
+#if MIN_VERSION_base(4,9,0)
+instance Commutative a => Commutative (WrappedMonoid a)
+#endif
 
 -- | @since 0.0.1.0
 instance Commutative a => Commutative (Maybe a)
