@@ -1,6 +1,6 @@
 cabal-version:       2.4
 name:                commutative-semigroups
-version:             0.1.0.2
+version:             0.1.1.0
 synopsis:            Commutative semigroups
 description:
   A commutative semigroup is a semigroup where the order of arguments to mappend does not matter.
