@@ -1,5 +1,9 @@
 # Revision history for commutative-semigroups
 
+## 0.2.0.1 -- 2024-05-18
+
+- Loosen dependency bounds for GHC 9.10, thanks to yaitskov
+
 ## 0.2 -- 2024-04-09
 
 - Removed the instances for the `Event` and `Lifetime` types unavailable on Windows
