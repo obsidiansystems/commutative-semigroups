@@ -1,5 +1,9 @@
 # Revision history for commutative-semigroups
 
+## 0.2.0.2 -- 2025-03-01
+
+- Loosen dependency bounds for containers-0.8
+
 ## 0.2.0.1 -- 2024-05-18
 
 - Loosen dependency bounds for GHC 9.10, thanks to yaitskov
