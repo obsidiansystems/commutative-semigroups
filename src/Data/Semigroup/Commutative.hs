@@ -109,6 +109,14 @@ instance Commutative a => Commutative (Identity a)
 -- Semigroup instances were only added in base-4.12.0.0.
 -- Also, contravariant was moved into base in this version.
 #if MIN_VERSION_base(4,12,0)
+instance Commutative (V1 a)
+
+instance Commutative (U1 a)
+
+instance Commutative c => Commutative (K1 i c a)
+
+instance Commutative (f a) => Commutative (M1 i c f a)
+
 -- | Product of commutative semigroups, Functor style.
 instance (Commutative (f a), Commutative (g a)) => Commutative ((f :*: g) a)
 
