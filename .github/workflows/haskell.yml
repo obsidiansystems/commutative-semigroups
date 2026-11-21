@@ -18,6 +18,9 @@ jobs:
           - '9.4'
           - '9.6'
           - '9.8'
+          - '9.10'
+          - '9.12'
+          - '9.14'
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
         exclude:
           # There are some linker warnings in 802 on darwin that
