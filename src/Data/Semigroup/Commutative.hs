@@ -2,6 +2,10 @@
 #if MIN_VERSION_base(4,12,0)
 {-# LANGUAGE TypeOperators #-}
 #endif
+#if MIN_VERSION_base(4,17,0)
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE UndecidableInstances #-}
+#endif
 
 module Data.Semigroup.Commutative where
 
@@ -126,4 +130,15 @@ instance (Commutative (f a), Commutative (g a)) => Commutative ((f :*: g) a)
 instance Commutative (f (g a)) => Commutative ((f :.: g) a)
 
 instance Commutative a => Commutative (Op a b)
+#endif
+
+-- Generically was added in base-4.17.0.0.
+#if MIN_VERSION_base(4,17,0)
+-- | A product type is commutative if all of its fields are commutative.
+--
+-- This instance allows subclasses of 'Commutative' to provide their own
+-- instances for 'Generically'. Deriving 'Commutative' itself via
+-- 'Generically' does not consult this instance, since 'Commutative' has no
+-- methods (see GHC issue #12814).
+instance (Generic a, Commutative (Rep a ())) => Commutative (Generically a)
 #endif
