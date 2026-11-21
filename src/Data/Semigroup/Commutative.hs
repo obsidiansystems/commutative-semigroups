@@ -105,8 +105,8 @@ instance Commutative a => Commutative (Const a x)
 instance Commutative a => Commutative (Identity a)
 #endif
 
--- (:*:) and (:.:) exist since base-4.6.0.0 but the Monoid instances
--- arrive in base-4.12.0.0.
+-- Generic representation types have existed since base-4.6.0.0, but their
+-- Semigroup instances were only added in base-4.12.0.0.
 -- Also, contravariant was moved into base in this version.
 #if MIN_VERSION_base(4,12,0)
 -- | Product of commutative semigroups, Functor style.
