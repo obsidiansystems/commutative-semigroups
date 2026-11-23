@@ -2,6 +2,10 @@
 #if MIN_VERSION_base(4,12,0)
 {-# LANGUAGE TypeOperators #-}
 #endif
+#if MIN_VERSION_base(4,17,0)
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE UndecidableInstances #-}
+#endif
 
 module Data.Semigroup.Commutative where
 
@@ -105,10 +109,18 @@ instance Commutative a => Commutative (Const a x)
 instance Commutative a => Commutative (Identity a)
 #endif
 
--- (:*:) and (:.:) exist since base-4.6.0.0 but the Monoid instances
--- arrive in base-4.12.0.0.
+-- Generic representation types have existed since base-4.6.0.0, but their
+-- Semigroup instances were only added in base-4.12.0.0.
 -- Also, contravariant was moved into base in this version.
 #if MIN_VERSION_base(4,12,0)
+instance Commutative (V1 a)
+
+instance Commutative (U1 a)
+
+instance Commutative c => Commutative (K1 i c a)
+
+instance Commutative (f a) => Commutative (M1 i c f a)
+
 -- | Product of commutative semigroups, Functor style.
 instance (Commutative (f a), Commutative (g a)) => Commutative ((f :*: g) a)
 
@@ -118,4 +130,15 @@ instance (Commutative (f a), Commutative (g a)) => Commutative ((f :*: g) a)
 instance Commutative (f (g a)) => Commutative ((f :.: g) a)
 
 instance Commutative a => Commutative (Op a b)
+#endif
+
+-- Generically was added in base-4.17.0.0.
+#if MIN_VERSION_base(4,17,0)
+-- | A product type is commutative if all of its fields are commutative.
+--
+-- This instance allows subclasses of 'Commutative' to provide their own
+-- instances for 'Generically'. Deriving 'Commutative' itself via
+-- 'Generically' does not consult this instance, since 'Commutative' has no
+-- methods (see GHC issue #12814).
+instance (Generic a, Commutative (Rep a ())) => Commutative (Generically a)
 #endif
