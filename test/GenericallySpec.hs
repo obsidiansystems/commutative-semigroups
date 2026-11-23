@@ -1,9 +1,14 @@
 {-# LANGUAGE CPP #-}
 #if MIN_VERSION_base(4,17,0)
+-- MicroHs does not yet support Generics, or deriving via for data types:
+-- https://github.com/augustss/MicroHs/issues/580
+--
+#if !defined(__MHS__)
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE UndecidableInstances #-}
+#endif
 #endif
 
 -- Tests that 'Commutative' and its subclasses can be derived via 'Generically'
@@ -14,6 +19,7 @@
 module Main (main) where
 
 #if MIN_VERSION_base(4,17,0)
+#if !defined(__MHS__)
 
 import Data.Semigroup.Commutative (Commutative)
 import GHC.Generics (Generic, Generically (..), Rep)
@@ -138,6 +144,7 @@ newtype F2 = F2 () deriving (Semigroup, Commutative) via ()
 newtype F3 = F3 () deriving (Semigroup, Commutative) via ()
 newtype F4 = F4 () deriving (Semigroup, Commutative) via ()
 
+#endif
 #endif
 
 main :: IO ()
